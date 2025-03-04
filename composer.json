@@ -1,0 +1,12 @@
+{
+    "name": "akyos/systempay-bundle",
+    "description": "Payment gateway for Banque Populaire and Caisse d'épargne.",
+    "require": {
+        "php": ">=8.2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Akyos\\SystempayBundle\\": "src/"
+        }
+    }
+}
