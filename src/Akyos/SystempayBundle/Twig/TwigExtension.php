@@ -2,22 +2,21 @@
 
 namespace Akyos\SystempayBundle\Twig;
 
-use Twig_Extension;
-use Twig_SimpleFunction;
-
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 /**
  * Class TwigExtension
  * @package Akyos\SystempayBundle\Twig
  */
-class TwigExtension extends Twig_Extension
+class TwigExtension extends AbstractExtension
 {
     /**
      * @return array
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return array(
-            new Twig_SimpleFunction('systempayForm', array($this, 'systempayForm')),
+            new TwigFunction('systempayForm', [$this, 'systempayForm']),
         );
     }
 
@@ -25,19 +24,12 @@ class TwigExtension extends Twig_Extension
      * @param $fields
      * @return string
      */
-    public function systempayForm($fields)
+    public function systempayForm($fields): string
     {
         $inputs = '';
-        foreach ($fields as $field => $value)
+        foreach ($fields as $field => $value) {
             $inputs .= sprintf('<input type="hidden" name="%s" value="%s">', $field, $value);
+        }
         return $inputs;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'systempay_twig_extension';
     }
 }

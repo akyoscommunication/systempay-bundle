@@ -17,10 +17,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('akyos_systempay');
+        $treeBuilder = new TreeBuilder('akyos_systempay');
 
-        $rootNode
+        $treeBuilder
+            ->getRootNode()
             ->children()
             ->scalarNode('debug')->defaultValue('ON')->end()
             ->scalarNode('site_id')->defaultValue('')->end()
