@@ -3,7 +3,8 @@
 namespace Akyos\SystempayBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Akyos\SystempayBundle\Entity\Transaction;
 
@@ -38,6 +39,9 @@ class SystemPay
      */
     private $key;
 
+    /**
+     * @var EntityManager
+     */
     private $entityManager;
 
     /**
@@ -148,7 +152,7 @@ class SystemPay
         }
         return false;
     }
-    
+
     /**
      * @return Transaction
      */
@@ -156,7 +160,7 @@ class SystemPay
     {
         $query = $request->request->all();
         $this->transaction = $this->entityManager->getRepository('AkyosSystempayBundle:Transaction')->find($query['vads_trans_id']);
-        
+
         return $this->transaction;
     }
 
@@ -199,7 +203,7 @@ class SystemPay
         ksort($fields);
         $contenu_signature = "";
         foreach ($fields as $field => $value)
-                $contenu_signature .= $value."+";
+            $contenu_signature .= $value."+";
         $contenu_signature .= $this->key;
         $signature = sha1($contenu_signature);
         return $signature;
