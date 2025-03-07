@@ -6,7 +6,3 @@ services:
         autoconfigure: true
         public: true
 
-    akyos.systempay:
-        class: Akyos\SystempayBundle\Service\SystemPay
-        arguments: ['@doctrine.orm.entity_manager', '@service_container']
-

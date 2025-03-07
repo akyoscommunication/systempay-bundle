@@ -3,8 +3,7 @@
 namespace Akyos\SystempayBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Akyos\SystempayBundle\Entity\Transaction;
 
@@ -49,15 +48,15 @@ class SystemPay
      */
     private $transaction;
 
-    public function __construct(EntityManagerInterface $entityManager, ContainerInterface $container)
+    public function __construct(EntityManagerInterface $entityManager, ParameterBagInterface $container)
     {
         $this->entityManager = $entityManager;
         foreach ($this->mandatoryFields as $field => $value)
-            $this->mandatoryFields[$field] = $container->getParameter(sprintf('akyos_systempay.%s', $field));
+            $this->mandatoryFields[$field] = $container->get(sprintf('akyos_systempay.%s', $field));
         if ($this->mandatoryFields['ctx_mode'] == "TEST")
-            $this->key = $container->getParameter('akyos_systempay.key_dev');
+            $this->key = $container->get('akyos_systempay.key_dev');
         else
-            $this->key = $container->getParameter('akyos_systempay.key_prod');
+            $this->key = $container->get('akyos_systempay.key_prod');
 
     }
 
