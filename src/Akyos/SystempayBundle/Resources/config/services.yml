@@ -10,7 +10,3 @@ services:
         class: Akyos\SystempayBundle\Service\SystemPay
         arguments: ['@doctrine.orm.entity_manager', '@service_container']
 
-    akyos.systempay.twig_extension:
-        class: Akyos\SystempayBundle\Twig\TwigExtension
-        tags:
-            - { name: twig.extension }
