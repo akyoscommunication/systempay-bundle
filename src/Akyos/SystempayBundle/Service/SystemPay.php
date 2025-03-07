@@ -2,8 +2,8 @@
 
 namespace Akyos\SystempayBundle\Service;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\Container;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Akyos\SystempayBundle\Entity\Transaction;
 
@@ -38,9 +38,6 @@ class SystemPay
      */
     private $key;
 
-    /**
-     * @var EntityManager
-     */
     private $entityManager;
 
     /**
@@ -48,7 +45,7 @@ class SystemPay
      */
     private $transaction;
 
-    public function __construct(EntityManager $entityManager, Container $container)
+    public function __construct(EntityManagerInterface $entityManager, ContainerInterface $container)
     {
         $this->entityManager = $entityManager;
         foreach ($this->mandatoryFields as $field => $value)
