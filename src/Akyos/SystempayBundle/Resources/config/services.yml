@@ -1,4 +1,10 @@
 services:
+    Akyos\SystempayBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Entity,Tests,Kernel.php}'
+        autowire: true
+        autoconfigure: true
+        public: true
 
     akyos.systempay:
         class: Akyos\SystempayBundle\Service\SystemPay
