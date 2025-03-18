@@ -158,7 +158,7 @@ class SystemPay
     public function findTransaction(Request $request)
     {
         $query = $request->request->all();
-        $this->transaction = $this->entityManager->getRepository('AkyosSystempayBundle:Transaction')->find($query['vads_trans_id']);
+        $this->transaction = $this->entityManager->getRepository(Transaction::class)->find($query['vads_trans_id']);
 
         return $this->transaction;
     }
