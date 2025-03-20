@@ -2,70 +2,70 @@
 
 namespace Akyos\SystempayBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Transaction
- *
- * @ORM\Table(name="systempay_transaction")
- * @ORM\Entity()
  */
+#[ORM\Entity]
+#[ORM\Table(name: 'systempay_transaction')]
 class Transaction
 {
     /**
      * @var
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
+    #[ORM\Column(name: 'id', type: 'integer')]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     private $id;
 
     /**
      * @var string
-     * @ORM\Column(name="status_code", type="string", length=255, nullable=true)
      */
+    #[ORM\Column(name: 'status_code', type: 'string', length: 255, nullable: true)]
     private $status;
 
     /**
      * @var int
-     * @ORM\Column(name="amount", type="integer")
      */
+    #[ORM\Column(name: 'amount', type: 'integer')]
     private $amount;
 
     /**
      * @var int
-     * @ORM\Column(name="currency", type="integer")
      */
+    #[ORM\Column(name: 'currency', type: 'integer')]
     private $currency;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @var DateTime
      */
+    #[ORM\Column(name: 'created_at', type: 'datetime')]
     private $createdAt;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @var DateTime
      */
+    #[ORM\Column(name: 'updated_at', type: 'datetime')]
     private $updatedAt;
 
     /**
      * @var string
-     * @ORM\Column(name="log_response", type="text", nullable=true)
      */
+    #[ORM\Column(name: 'log_response', type: 'text', nullable: true)]
     private $logResponse;
 
     /**
      * @var bool
-     * @ORM\Column(name="paid", type="boolean")
      */
+    #[ORM\Column(name: 'paid', type: 'boolean')]
     private $paid;
 
     /**
      * @var bool
-     * @ORM\Column(name="refunded", type="boolean")
      */
+    #[ORM\Column(name: 'refunded', type: 'boolean')]
     private $refunded;
 
     /**
@@ -79,13 +79,13 @@ class Transaction
     /**
      * @param int $amount
      */
-    public function setAmount($amount)
+    public function setAmount($amount): void
     {
         $this->amount = $amount;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -93,9 +93,9 @@ class Transaction
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -111,7 +111,7 @@ class Transaction
     /**
      * @param int $currency
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $this->currency = $currency;
     }
@@ -124,10 +124,7 @@ class Transaction
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
+    public function setId(mixed $id): void
     {
         $this->id = $id;
     }
@@ -143,7 +140,7 @@ class Transaction
     /**
      * @param string $logResponse
      */
-    public function setLogResponse($logResponse)
+    public function setLogResponse($logResponse): void
     {
         $this->logResponse = $logResponse;
     }
@@ -159,7 +156,7 @@ class Transaction
     /**
      * @param boolean $paid
      */
-    public function setPaid($paid)
+    public function setPaid($paid): void
     {
         $this->paid = $paid;
     }
@@ -175,7 +172,7 @@ class Transaction
     /**
      * @param boolean $refunded
      */
-    public function setRefunded($refunded)
+    public function setRefunded($refunded): void
     {
         $this->refunded = $refunded;
     }
@@ -191,13 +188,13 @@ class Transaction
     /**
      * @param string $status
      */
-    public function setStatus($status)
+    public function setStatus($status): void
     {
         $this->status = $status;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -205,9 +202,9 @@ class Transaction
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt($updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
